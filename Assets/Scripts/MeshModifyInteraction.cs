@@ -55,10 +55,12 @@ public class MeshModifyInteraction : MonoBehaviour
     {
         curX = 0.05f;
         curY = 0.05f;
-        curZ = 0.00f;
+        curZ = 0.05f;
         state = State.CONTROL;
         curSummonObject = Instantiate(summonObjectTemplate);
         curSummonObject.transform.position = hit.point;
+        orgPos = hit.point;
+        Debug.Log(hit.point);
         normal = hit.normal;
     }
 
