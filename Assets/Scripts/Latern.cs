@@ -13,7 +13,7 @@ public class Latern : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position+offsetPos, k.transform.position);
         float scales = (transform.lossyScale.x + transform.lossyScale.y + transform.lossyScale.z) / 3.0f;
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if(distance<acceptRange*scales)
         {
             AttachKey(k);
