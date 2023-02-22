@@ -55,6 +55,14 @@
       "requirement": "mandatory"
     },
     {
+      "name": "/actions/default/in/ButtonA",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/ButtonB",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

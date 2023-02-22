@@ -8,11 +8,16 @@ public class Door : IKeyListener
     public float openDownDistance = 5.0f;
     public float speed = 1.0f;
     protected float curOpenDownDistance = 0.0f;
+    public AudioSource source;
+
+    protected bool lastState = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(source==null)
+            source = GetComponent<AudioSource>();
+        lastState = isOpen;
     }
 
     // Update is called once per frame
@@ -25,8 +30,8 @@ public class Door : IKeyListener
             {
                 return;
             }
-            dt *= openDownDistance - curOpenDownDistance;
-            curOpenDownDistance += dt * 0.9f + dt * 0.1f;
+            dt *= (openDownDistance - curOpenDownDistance)*0.7f + dt * 0.3f ;
+            curOpenDownDistance += dt;
             transform.position += Vector3.down * dt;
         }
         else
@@ -35,9 +40,14 @@ public class Door : IKeyListener
             {
                 return;
             }
-            dt *= curOpenDownDistance*0.9f+dt*0.1f;
+            dt *= curOpenDownDistance*0.7f+dt*0.3f;
             curOpenDownDistance -= dt;
             transform.position -= Vector3.down * dt;
+        }
+        if(lastState!=isOpen)
+        {
+            lastState = isOpen;
+            source.Play();
         }
     }
 
